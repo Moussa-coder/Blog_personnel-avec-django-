@@ -1,7 +1,51 @@
-<h1>Supprimer l'article</h1>
-<p>Es-tu sûr de vouloir supprimer "{{ article.titre }}" ?</p>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Oui, supprimer</button>
-</form>
-<a href="{% url 'article_list' %}">Annuler</a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer l'article</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+        .btn-secondary {
+            display: inline-block;
+            margin-left: 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-color: #f3f4f6; font-family: sans-serif;">
+    <div class="container">
+        <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Supprimer l'article</h1>
+        <p style="margin-bottom: 1.5rem;">Es-tu sûr de vouloir supprimer "{{ article.titre }}" ?</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Oui, supprimer</button>
+            <a href="{% url 'article_list' %}" class="btn-secondary">Annuler</a>
+        </form>
+    </div>
+</body>
+</html>

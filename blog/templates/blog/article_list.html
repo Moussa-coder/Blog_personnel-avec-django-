@@ -1,11 +1,73 @@
-<h1>Liste des articles</h1>
-<a href="{% url 'article_create' %}">+ Nouvel article</a>
-<ul>
-  {% for article in articles %}
-    <li>
-      <a href="{% url 'article_detail' article.pk %}">{{ article.titre }}</a>
-      - <a href="{% url 'article_update' article.pk %}">Modifier</a>
-      - <a href="{% url 'article_delete' article.pk %}">Supprimer</a>
-    </li>
-  {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des articles</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .btn-new {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background-color: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+        }
+        .btn-new:hover {
+            background-color: #059669;
+        }
+        .article-list {
+            list-style: none;
+            padding: 0;
+        }
+        .article-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .article-title {
+            font-weight: 600;
+            color: #1f2937;
+            text-decoration: none;
+        }
+        .article-title:hover {
+            text-decoration: underline;
+        }
+        .action-links a {
+            color: #6b7280;
+            margin-left: 0.5rem;
+            text-decoration: none;
+        }
+        .action-links a:hover {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-color: #f3f4f6; font-family: sans-serif;">
+    <div class="container">
+        <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Liste des articles</h1>
+        <a href="{% url 'article_create' %}" class="btn-new">+ Nouvel article</a>
+        
+        <ul class="article-list">
+            {% for article in articles %}
+                <li class="article-item">
+                    <a href="{% url 'article_detail' article.pk %}" class="article-title">{{ article.titre }}</a>
+                    <span class="action-links">
+                        <a href="{% url 'article_update' article.pk %}">Modifier</a>
+                        <a href="{% url 'article_delete' article.pk %}">Supprimer</a>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
